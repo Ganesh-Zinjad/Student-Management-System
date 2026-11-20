@@ -1,0 +1,276 @@
+/* ==========================================================
+   Profile.css — Student Profile page
+   Same theme as Admin.css (teal + slate)
+   ========================================================== */
+
+:root {
+  --ink: #1b2430;
+  --ink-soft: #5b6676;
+  --paper: #f3f5f7;
+  --surface: #ffffff;
+  --line: #dde2e8;
+  --accent: #0f6b66;
+  --accent-dark: #0b524e;
+  --accent-tint: #e3f2f0;
+  --danger: #b42318;
+  --radius: 8px;
+  --font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- General ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Main content ---------- */
+.main-content {
+  flex: 1;
+  min-width: 0;
+  padding: 32px 24px 56px;
+}
+
+header {
+  max-width: 1100px;
+  margin: 0 auto 24px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--ink);
+}
+
+header h1 {
+  margin-bottom: 4px;
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+header p {
+  color: var(--ink-soft);
+}
+
+/* ---------- Profile container ---------- */
+.profile-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* ---------- Profile header ---------- */
+.profile-header {
+  padding: 32px 30px;
+  text-align: center;
+  background: var(--accent-tint);
+  border-bottom: 1px solid var(--line);
+}
+
+.profile-header img {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 16px;
+  object-fit: cover;
+  border: 4px solid var(--surface);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.profile-header h2 {
+  margin-bottom: 4px;
+  font-size: 1.4rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.profile-header p {
+  margin-bottom: 16px;
+  color: var(--ink-soft);
+}
+
+.status {
+  display: inline-block;
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #0b4f3a;
+  background: #d5eee3;
+  border-radius: 999px;
+}
+
+/* ---------- Details section ---------- */
+.details-section {
+  padding: 28px 30px;
+  border-bottom: 1px solid var(--line);
+}
+
+.details-section h3 {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 20px;
+}
+
+.detail {
+  padding: 14px 16px;
+  background: #fbfcfd;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+}
+
+.detail label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.detail p {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Buttons ---------- */
+.button-section {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 24px;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:focus-visible {
+  outline: 3px solid rgba(15, 107, 102, 0.4);
+  outline-offset: 2px;
+}
+
+.edit-btn {
+  color: #fff;
+  background: var(--accent);
+}
+
+.edit-btn:hover {
+  background: var(--accent-dark);
+}
+
+.back-btn {
+  color: var(--ink);
+  background: transparent;
+  border-color: #c5ccd5;
+}
+
+.back-btn:hover {
+  background: var(--paper);
+  border-color: var(--ink-soft);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .main-content {
+    padding: 20px 14px 40px;
+  }
+
+  .profile-header {
+    padding: 24px 20px;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .details-section {
+    padding: 22px 20px;
+  }
+
+  .button-section {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .button-section button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  .button-section {
+    display: none;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .main-content {
+    padding: 0;
+  }
+
+  .profile-container {
+    border: none;
+  }
+
+  .profile-header {
+    background: #fff;
+  }
+
+  .detail {
+    break-inside: avoid;
+  }
+}

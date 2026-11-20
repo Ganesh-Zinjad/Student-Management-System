@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ student.name }} Profile</title>
+
+    <link rel="stylesheet" href="/static/css/Profile.css">
+</head>
+
+<body>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Profile Card -->
+        <div class="profile-container">
+
+            <div class="profile-header">
+                <h2>{{ student.name }}</h2>
+                <p>{{ student.course }}</p>
+            </div>
+
+            <!-- Student Information -->
+            <div class="details-section">
+                <h3>Student Information</h3>
+
+                <div class="details-grid">
+
+                    <div class="detail">
+                        <label>Admission Number</label>
+                        <p>{{ student.admission_no }}</p>
+                    </div>
+
+                    <div class="detail">
+                        <label>Full Name</label>
+                        <p>{{ student.name }}</p>
+                    </div>
+
+                    <div class="detail">
+                        <label>Age</label>
+                        <p>{{ student.age }}</p>
+                    </div>
+
+                    <div class="detail">
+                        <label>Course</label>
+                        <p>{{ student.course }}</p>
+                    </div>
+
+                    <div class="detail">
+                        <label>Gender</label>
+                        <p>{{ student.gender | capitalize }}</p>
+                    </div>
+
+                    <div class="detail">
+                        <label>Phone Number</label>
+                        <p>{{ student.phone_no }}</p>
+                    </div>
+
+                    <div class="detail">
+                        <label>Average CGPA</label>
+                        <p>{{ "%.2f" | format(student.cgpa) }}</p>
+                    </div>
+
+                    <div class="detail">
+                        <label>Passing Year</label>
+                        <p>{{ student.passing_year }}</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-section">
+
+                <button class="edit-btn" onclick="window.print()">
+                    Print Profile
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+```

@@ -1,0 +1,14 @@
+# FastAPI application
+fastapi
+uvicorn[standard]
+
+# Database: PostgreSQL + SQLAlchemy
+sqlalchemy
+psycopg2-binary
+
+# Server-side HTML templates and HTML form handling
+jinja2
+python-multipart
+
+# Load environment variables from .env
+python-dotenv

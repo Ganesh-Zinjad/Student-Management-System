@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Student Admin Panel</title>
+
+    <link rel="stylesheet" href="/static/css/Admin.css" />
+  </head>
+
+  <body>
+    <div class="admin-container">
+      <!-- Header -->
+      <div class="header">
+        <div>
+          <h1>Student Management</h1>
+        </div>
+
+        <div class="admin-info">
+          <span>Administrator</span>
+        </div>
+      </div>
+
+      <!-- Dashboard Statistics -->
+      <div class="stats-container">
+        <div class="stat-card">
+          <h3>Total Students</h3>
+          <h2 id="totalStudents">{{ total_students }}</h2>
+        </div>
+      </div>
+
+      <!-- Add Student Section -->
+      <div class="section">
+        <h2>Add New Student</h2>
+
+        <form id="add_student">
+          <div class="form-grid">
+            <!-- Admission Number -->
+            <div class="form-group">
+              <label>Admission Number</label>
+
+              <input
+                type="text"
+                name="admission_no"
+                placeholder="Enter admission number"
+                required
+              />
+            </div>
+
+            <!-- Full Name -->
+            <div class="form-group">
+              <label>Full Name</label>
+
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter student name"
+                minlength="2"
+                maxlength="100"
+                required
+              />
+            </div>
+
+            <!-- Age -->
+            <div class="form-group">
+              <label>Age</label>
+
+              <input
+                type="number"
+                name="age"
+                min="5"
+                max="100"
+                placeholder="Enter age"
+                required
+              />
+            </div>
+
+            <!-- Course -->
+            <div class="form-group">
+              <label>Course</label>
+
+              <input
+                type="text"
+                name="course"
+                minlength="2"
+                maxlength="100"
+                placeholder="Enter course"
+                required
+              />
+            </div>
+
+            <!-- Gender -->
+            <div class="form-group">
+              <label>Gender</label>
+
+              <select name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="form-group">
+              <label>Phone Number</label>
+
+              <input
+                type="tel"
+                name="phone_no"
+                minlength="8"
+                maxlength="16"
+                pattern="\+?[1-9][0-9]{7,14}"
+                placeholder="Enter phone number"
+                required
+              />
+            </div>
+
+            <!-- CGPA -->
+            <div class="form-group">
+              <label>Average CGPA</label>
+
+              <input
+                type="number"
+                name="cgpa"
+                min="0"
+                max="10"
+                step="0.01"
+                placeholder="Enter CGPA"
+                required
+              />
+            </div>
+
+            <!-- Passing Year -->
+            <div class="form-group">
+              <label>Passing Year</label>
+
+              <input
+                type="number"
+                name="passing_year"
+                min="1900"
+                max="2100"
+                placeholder="Enter passing year"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="add-btn">+ Add Student</button>
+        </form>
+      </div>
+
+      <!-- Student Search Section -->
+      <div class="section">
+        <div class="table-header">
+          <h2>Search Students</h2>
+
+          <form
+            action="/search_student"
+            method="GET"
+            class="search-form"
+            id="searchForm"
+          >
+            <input
+              type="text"
+              id="search"
+              name="search"
+              placeholder="Search by admission number"
+              required
+            />
+
+            <button type="submit" class="search-btn">Search</button>
+          </form>
+        </div>
+
+        <!-- Student Search Result -->
+        <div id="searchResult" class="search-result">
+          <!-- Student Result Card -->
+          <div class="student-result">
+            <div class="result-header">
+              <div>
+                <h2>Student Details</h2>
+              </div>
+            </div>
+
+            <!-- Student Details -->
+            <div class="student-details">
+              <div class="detail-item">
+                <span>Admission Number</span>
+                <strong id="studentAdmission">---</strong>
+              </div>
+
+              <div class="detail-item">
+                <span>Full Name</span>
+                <strong id="studentName">---</strong>
+              </div>
+
+              <div class="detail-item">
+                <span>Age</span>
+                <strong id="studentAge">---</strong>
+              </div>
+
+              <div class="detail-item">
+                <span>Course</span>
+                <strong id="studentCourse">---</strong>
+              </div>
+
+              <div class="detail-item">
+                <span>Gender</span>
+                <strong id="studentGender">---</strong>
+              </div>
+
+              <div class="detail-item">
+                <span>Phone Number</span>
+                <strong id="studentPhone">---</strong>
+              </div>
+
+              <div class="detail-item">
+                <span>Average CGPA</span>
+                <strong id="studentCGPA">---</strong>
+              </div>
+
+              <div class="detail-item">
+                <span>Passing Year</span>
+                <strong id="studentPassingYear">---</strong>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="result-actions">
+              <button
+                type="button"
+                class="edit-btn"
+                id="editStudentBtn"
+                data-admission="{{ student.admission_no | default('') }}"
+              >
+                Edit Student
+              </button>
+
+              <form
+                action="/admin/delete_student/{{ student.admission_no | default('') }}"
+                method="DELETE"
+                class="delete-form"
+                id="deleteStudentForm"
+              >
+                <button type="button" id="del_btn" class="delete-btn">Delete Student</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/static/javascript/AAdmin.js" defer></script>
+  </body>
+</html>
